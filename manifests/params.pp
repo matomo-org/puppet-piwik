@@ -17,7 +17,7 @@ class piwik::params {
 
   $repository     = 'svn'
   $svn_repository = 'http://dev.piwik.org/svn/'
-  $git_repository = 'https://github.com/piwik/piwik'
+  $git_repository = 'https://github.com/piwik/piwik.git'
   $piwik_version  = 'trunk'
 
   $db_user     = 'piwik@localhost'

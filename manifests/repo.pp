@@ -8,7 +8,7 @@
 # $directory::   The piwik repository will be checked out/cloned into this 
 #                directory.
 # $version::     The Piwik version. Defaults to 'trunk'. 
-#                Valid values: For example 'tags/1.8.3' or 'branch/whatever'.
+#                Valid values: For example 'HEAD', 'tags/1.8.3' or 'branch/whatever'.
 # $repository::  Whether to checkout the SVN or Git reporitory. Defaults to svn. 
 #                Valid values: 'svn' and 'git'.  
 #
@@ -43,7 +43,7 @@ define piwik::repo(
       source   => "${piwik::params::svn_repository}/${version}",
       owner    => $piwik::params::user,
       group    => $piwik::params::group,
-      require  => User["${piwik::params::user}"],
+      require  => [ User["${piwik::params::user}"], Package['subversion'] ],
     }
   }
 
@@ -51,10 +51,11 @@ define piwik::repo(
     vcsrepo { "${directory}":
       ensure   => present,
       provider => git,
-      source   => "${piwik::params::svn_repository}/${version}",
+      source   => $piwik::params::git_repository,
+      revision => $version,
       owner    => $piwik::params::user,
       group    => $piwik::params::group,
-      require  => User["${piwik::params::user}"],
+      require  => [ User["${piwik::params::user}"], Class['git'] ],
     }
   }
 
