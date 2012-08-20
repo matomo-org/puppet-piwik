@@ -29,10 +29,9 @@ class piwik::loganalytics {
     unless  => "which pip";
   }
 
-  exec { "install_simplejson":
-    command => "pip install simplejson",
-    require => Exec['easy_install_pip'],
-    unless  => 'pip freeze | grep "simplejson" > /dev/null';
-  }
+  package { 'simplejson': 
+    ensure   => installed, 
+    provider => 'pip', 
+    require  => Exec['easy_install_pip']}
 
 }
