@@ -34,17 +34,17 @@ class piwik::db(
     config_hash => { 'root_password' => $root_password }
   }
 
-  database_user { "${username}":
+  database_user { $username:
     ensure        => present,
     password_hash => mysql_password($password),
     provider      => 'mysql',
     require       => Class['mysql::server'],
   }
 
-  database_grant { "${username}":
+  database_grant { $username:
     privileges => ['all'],
     provider   => 'mysql',
-    require    => Database_user["${username}"],
+    require    => Database_user[$username],
   }
 
   include mysql::server::mysqltuner
