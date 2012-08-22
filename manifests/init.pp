@@ -58,7 +58,7 @@ class piwik(
     include piwik::loganalytics
   }
 
-  class { 'piwik::user': directory => $directory }
+  class { 'piwik::user': }
 
   # repo checkout
   piwik::repo { 'piwik_repo_setup':
