@@ -28,6 +28,8 @@ class { 'piwik':
   db_user       => 'username',
   db_password   => 'secure',
   log_analytics => true,
+  svn_username  => 'myusername',
+  svn_password  => 'mypassword',
 }
 
 piwik::apache { 'apache.piwik':

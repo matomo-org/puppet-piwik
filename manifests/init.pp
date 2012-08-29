@@ -16,6 +16,8 @@
 # $db_root_password::  A password for the MySQL root user.
 # $log_analytics::     Whether log analytics will be used. Defaults to true. 
 #                      Valid values: true or false
+# $svn_username::      Your svn username. Defaults to false.
+# $svn_password::      Your svn password. Defaults to false.
 # 
 # == Requires: 
 # 
@@ -37,7 +39,9 @@ class piwik(
   $db_user     = $piwik::params::db_user,
   $db_password = $piwik::params::db_password,
   $db_root_password = $piwik::params::db_password,
-  $log_analytics    = true
+  $log_analytics    = true,
+  $svn_username     = false,
+  $svn_password     = false
 ) inherits piwik::params {
 
   include piwik::base
@@ -62,10 +66,12 @@ class piwik(
 
   # repo checkout
   piwik::repo { 'piwik_repo_setup':
-    directory  => $directory,
-    version    => $version,
-    repository => $repository,
-    require    => Class['piwik::base'],
+    directory    => $directory,
+    version      => $version,
+    repository   => $repository,
+    svn_username => $svn_username,
+    svn_password => $svn_password,
+    require      => Class['piwik::base'],
   }
 
 }
