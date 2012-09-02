@@ -15,7 +15,7 @@ class piwik::php {
 
   include php
 
-  php::module { ['snmp', 'xdebug', 'mysql', 'gd', 'sqlite', 'memcache', 'mcrypt', 'imagick', 'geoip', 'uuid', 'recode', 'cgi']: 
+  php::module { ['snmp', 'curl', 'xdebug', 'mysql', 'gd', 'sqlite', 'memcache', 'mcrypt', 'imagick', 'geoip', 'uuid', 'recode', 'cgi']: 
     require => Class["php::install", "php::config"],
   }
 
