@@ -15,12 +15,20 @@ http://piwik.org
 
 ### Simple Example:
 ```
+Exec {
+  path => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+}
+
 class { 'piwik': }
 piwik::apache { 'apache.piwik': }
 ```
 
 ### Full example:
 ```
+Exec {
+  path => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+}
+
 class { 'piwik':
   directory     => '/var/www/piwik',
   repository    => 'svn',
