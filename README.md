@@ -85,7 +85,7 @@ Do not forget to update your local hosts file when adding servers
 * puppet-php - https://github.com/Mayflower/puppet-php
 * rafaelfc-phpqatools - https://github.com/rafaelfelix/puppet-phpqatools
 * puppetlabs-stdlib - https://github.com/puppetlabs/puppetlabs-stdlib
-* puppet-vcsrepo - https://github.com/openstack-ci/puppet-vcsrepo 
+* puppet-vcsrepo - https://github.com/openstack-infra/puppet-vcsrepo 
 
 ```
 git submodule add git://github.com/puppetlabs/puppetlabs-apache modules/apache
@@ -100,5 +100,5 @@ git submodule add git://github.com/treehouseagency/puppet-pear modules/pear
 git submodule add git://github.com/Mayflower/puppet-php modules/php
 git submodule add git://github.com/rafaelfelix/puppet-phpqatools modules/phpqatools
 git submodule add git://github.com/puppetlabs/puppetlabs-stdlib modules/stdlib
-git submodule add git://github.com/openstack-ci/puppet-vcsrepo modules/vcsrepo
+git submodule add git://github.com/openstack-infra/puppet-vcsrepo modules/vcsrepo
 ```
