@@ -70,7 +70,7 @@ piwik::nginx { 'version17.piwik':
 }
 ```
 
-Do not forget to update your local hosts file when adding servers
+Do not forget to update your local hosts file when adding servers.
 
 ### Requirements
 * puppetlabs-apache - https://github.com/puppetlabs/puppetlabs-apache 
