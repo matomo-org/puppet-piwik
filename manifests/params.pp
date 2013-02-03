@@ -15,7 +15,7 @@ class piwik::params {
   $group   = 'www-data'
   $docroot = '/var/www/piwik'
 
-  $repository     = 'svn'
+  $repository     = 'git'
   $svn_repository = 'http://dev.piwik.org/svn/'
   $git_repository = 'https://github.com/piwik/piwik.git'
   $piwik_version  = 'trunk'
