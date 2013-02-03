@@ -11,6 +11,9 @@ GPL v3 or later
 ### Link: 
 http://piwik.org
 
+### Issues
+Let us know if something is missing or going wrong. Just create a ticket here: [http://dev.piwik.org/trac](http://dev.piwik.org/trac)
+
 ## How to use
 
 ### Simple Example:
