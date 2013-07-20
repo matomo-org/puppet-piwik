@@ -48,13 +48,20 @@ class piwik::php {
   pear::package { "PHPUnit_Selenium":
     repository => "pear.phpunit.de",
     require    => Pear::Package["PEAR"],
-  }
+  }  
 
   exec { 'install_composer':
     command => 'curl -s https://getcomposer.org/installer | php -- --install-dir="/bin"',
     require => [ Package['curl'], Class["php::install", "php::config"] ],
     unless  => 'which composer.phar',
   }
+
+  exec { 'update_composer':
+    command => 'composer.phar self-update',
+    require => [ Exec['install_composer'] ],
+  }
+
+  class { 'piwik::xhprof': require => Class['php::install'] }
 
   # TODO add channels... we should fork pear module and send pull requests
   # pear module should allow to add channels, do upgrade and install a

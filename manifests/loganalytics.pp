@@ -14,12 +14,16 @@
 #
 class piwik::loganalytics {
 
+  if ! defined(Package['build-essential']) {
+    package { 'build-essential':
+      ensure => latest,
+    }
+  }
+  
   package {
     'python-setuptools':
         ensure => latest;
     'python-dev':
-        ensure => latest;
-    'build-essential':
         ensure => latest;
   }
 
