@@ -58,6 +58,7 @@ define piwik::apache (
     priority   => $priority,
     vhost_name => '_default_',
     port       => $port,
+    override   => 'All',
     docroot    => $docroot,
     require    => [ Host[$name], Piwik::Repo['piwik_repo_setup'], Class['piwik::php'] ],
     servername => $name
