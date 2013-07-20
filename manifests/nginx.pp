@@ -8,6 +8,8 @@
 # $name::     The name of the host
 # $port::     The port to configure the host
 # $docroot::  The location of the files for this host
+# $user::     Under which user php-fpm should run
+# $group::    Under which group php-fpm should run
 #
 # == Actions:
 #
@@ -22,11 +24,15 @@
 #  piwik::nginx { 'nginx.piwik':
 #    port     => 8080,
 #    docroot  => '/var/www/piwik',
+#    user     => 'piwik',
+#    group    => 'www'
 #  }
 #
 define piwik::nginx (
   $port    = 8080,
-  $docroot = $piwik::params::docroot
+  $docroot = $piwik::params::docroot,
+  $user    = $piwik::params::user,
+  $group   = $piwik::params::group,
 ) {
 
   $socket_path = "${docroot}/tmp/fpm.socket"
@@ -37,12 +43,12 @@ define piwik::nginx (
 
   php::fpm::pool { "${name}":
     pool_prefix          => $docroot,
-    user                 => $piwik::params::user,
-    group                => $piwik::params::group,
+    user                 => $user,
+    group                => $group,
     listen_type          => 'socket',
     listen               => $socket_path,
-    socket_owner         => $piwik::params::user,
-    socket_group         => $piwik::params::group,
+    socket_owner         => $user,
+    socket_group         => $group,
     socket_mode          => '0660',
     catch_workers_output => 'yes',
     require              => [ Host[$name], Piwik::Repo['piwik_repo_setup'], Class['piwik::php'] ]

@@ -48,12 +48,16 @@ piwik::apache { 'apache.piwik':
   docroot  => '/var/www/piwik',
   priority => '10',
   require  => Class['piwik'],
+  user     => 'piwik',
+  group    => 'www',
 }
 
 piwik::nginx { 'nginx.piwik':
   port    => 8080,
   docroot => '/var/www/piwik',
   require => Class['piwik'],
+  user    => 'piwik',
+  group   => 'www',
 }
 ```
 
@@ -89,6 +93,7 @@ Do not forget to update your local hosts file when adding servers.
 * rafaelfc-phpqatools - https://github.com/rafaelfelix/puppet-phpqatools
 * puppetlabs-stdlib - https://github.com/puppetlabs/puppetlabs-stdlib
 * puppet-vcsrepo - https://github.com/openstack-infra/puppet-vcsrepo 
+* puppet-concat - https://github.com/ripienaar/puppet-concat
 
 ```
 git submodule add git://github.com/puppetlabs/puppetlabs-apache modules/apache
@@ -104,4 +109,5 @@ git submodule add git://github.com/Mayflower/puppet-php modules/php
 git submodule add git://github.com/rafaelfelix/puppet-phpqatools modules/phpqatools
 git submodule add git://github.com/puppetlabs/puppetlabs-stdlib modules/stdlib
 git submodule add git://github.com/openstack-infra/puppet-vcsrepo modules/vcsrepo
+git submodule add https://github.com/ripienaar/puppet-concat.git modules/concat
 ```
