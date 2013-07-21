@@ -9,6 +9,7 @@
 # $root_password::  A password for the MySQL root user
 # $username::       If defined, a MySQL user with this name will be created 
 # $password::       The MySQL user's password
+# $ipaddress::      IP address MySQL should listen to
 # 
 # == Requires: 
 # 
@@ -20,18 +21,28 @@
 #    root_password => '123456',
 #    username => 'piwik',
 #    password => 'piwik',
+#    ipadress => '127.0.0.1',
 #  }
 #
 class piwik::db(
   $username      = $piwik::params::db_user,
   $password      = $piwik::params::db_password,
-  $root_password = $piwik::params::db_password
+  $root_password = $piwik::params::db_password,
+  $ipaddress     = $ipaddress_eth1
 ) {
 
   class { 'mysql': }
 
   class { 'mysql::server':
-    config_hash => { 'root_password' => $root_password }
+    config_hash => { 'root_password' => $root_password, 'bind_address' => $ipaddress }
+  }
+
+  database_user { 'root@%':
+   password_hash => mysql_password($root_password),
+  }
+
+  database_grant { 'root@%':
+   privileges => ['all'] ,
   }
 
   database_user { $username:
