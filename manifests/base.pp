@@ -25,6 +25,8 @@ class piwik::base {
 
   package { 'facter': ensure => latest, require => Exec['base_apt-get_update'] }
 
+  package { 'sendmail': ensure => latest, require => Exec['base_apt-get_update'] }
+
   package { 'strace': ensure => latest, require => Exec['base_apt-get_update'] }
 
   package { 'tcpdump': ensure => latest, require => Exec['base_apt-get_update'] }
