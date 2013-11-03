@@ -83,7 +83,7 @@ Do not forget to update your local hosts file when adding servers.
 * puppetlabs-apache - https://github.com/puppetlabs/puppetlabs-apache 
 * puppet-apt - https://github.com/camptocamp/puppet-apt
 * puppet-augeas - https://github.com/camptocamp/puppet-augeas
-* puppet-common - https://github.com/camptocamp/puppet-common
+* puppet-common - https://github.com/puppet-modules/puppet-common
 * puppetlabs-firewall - https://github.com/puppetlabs/puppetlabs-firewall
 * puppetlabs-git - https://github.com/puppetlabs/puppetlabs-git
 * puppetlabs-mysql - https://github.com/puppetlabs/puppetlabs-mysql
@@ -99,7 +99,7 @@ Do not forget to update your local hosts file when adding servers.
 git submodule add git://github.com/puppetlabs/puppetlabs-apache modules/apache
 git submodule add git://github.com/camptocamp/puppet-apt modules/apt
 git submodule add git://github.com/camptocamp/puppet-augeas modules/augeas
-git submodule add git://github.com/camptocamp/puppet-common modules/common
+git submodule add git://github.com/puppet-modules/puppet-common modules/common
 git submodule add git://github.com/puppetlabs/puppetlabs-firewall modules/Firewall
 git submodule add git://github.com/puppetlabs/puppetlabs-git modules/git
 git submodule add git://github.com/puppetlabs/puppetlabs-mysql modules/mysql
